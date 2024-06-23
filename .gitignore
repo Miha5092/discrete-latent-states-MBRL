@@ -1,0 +1,12 @@
+minatar/
+.vscode/
+.idea
+.idea/
+data/
+*.code-workspace
+misc
+notebooks
+__pycache__/
+plotting/
+plotting
+wandb/
