@@ -38,24 +38,26 @@ $$
 $$ with $$
 
 $$
-\mathcal{L}_{pred}(\phi) = \text{MSE}(\hat{x_i}, x_i) + \text{MSE}(\hat{r_i}, r_i) + \text{BCE}(\hat{t_i}, t_i),
+\mathcal{L}_{pred}(\phi) = \text{MSE}(\hat{x_i}, x_i) + \text{MSE}(\hat{r_i}, r_i) + \text{BCE}(\hat{t_i}, t_i)
 $$
 
 $$
-\mathcal{L}_{dyn}(\phi) = \left\{
-\begin{array}{ll}
+\mathcal{L}_{dyn}(\phi) = 
+\begin{cases}
      \text{MSE}(\text{sg}(\hat{l_i}), l_i) & \text{, continuous latent space} \\
      \max(kl\_clip, \text{KL}(\text{sg}(\hat{z_i}), z_i)) & \text{, discrete latent space} \\
-\end{array} \right.
+\end{cases}
 $$
 
+
 $$
-\mathcal{L}_{rep}(\phi) = \left\{
-\begin{array}{ll}
+\mathcal{L}_{rep}(\phi) = 
+\begin{cases}
      \text{MSE}(\hat{l_i}, \text{sg}(l_i)) & \text{, continuous latent space} \\
      \max(kl\_clip, \text{KL}(\hat{z_i}, \text{sg}(z_i))) & \text{, discrete latent space} \\
-\end{array} \right.
+\end{cases}
 $$
+
 
 
 ### Continuous Model
