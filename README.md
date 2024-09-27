@@ -49,6 +49,14 @@ $$
 \end{array} \right.
 $$
 
+$$
+\mathcal{L}_{rep}(\phi) = \left\{
+\begin{array}{ll}
+     \text{MSE}(\hat{l_i}, \text{sg}(l_i)) & \text{, continuous latent space} \\
+     \max(kl\_clip, \text{KL}(\hat{z_i}, \text{sg}(z_i))) & \text{, discrete latent space} \\
+\end{array} \right.
+$$
+
 
 ### Continuous Model
 
