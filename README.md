@@ -32,7 +32,8 @@ categorical distribution, the discrete model is trained using the Gumber-Softmax
 while also one-hot encoding samples.
 
 $$
-\mathcal{L}(\phi) = \mathcal{L}_{pred}(\phi) + \beta_{dyn}\mathcal{L}_{dyn}(\phi) + \beta_{rep}\mathcal{L}_{rep}(\phi)
+\mathcal{L}(\phi) = 
+\mathcal{L}_{pred}(\phi) + \beta_{dyn}\mathcal{L}_{dyn}(\phi) + \beta_{rep}\mathcal{L}_{rep}(\phi)
 $$
 
 $$ with $$
