@@ -22,6 +22,22 @@ The architecture as a whole is heavily influenced by that of the [DreamerV2](htt
 
 The world model is structured into three components. The representation component encodes the input frame $x_i$ into its latent space representation $h_i$. The reconstruction network uses this embedding to decode the latent state into an approximate frame $\hat{x}_i$ which resembles, as closely as possible, the original input. Both components are implemented as Convolutional Neural Networks (CNN)  with the representation model also using a Multi-Layer Perceptron (MLP). The dynamics component, consisting of multiple MLPs, uses an action $a_i$ and the latent embedding $h_i$ to predict the reward $r_i$, termination $t_i$, and latent state of the transition's next frame $\hat{h}_{i+1}$. All model components and their relations are presented in \autoref{fig:architecture}. 
 
+### Continuous Model
+
+The representation and dynamics models directly learn the continuous latent representations $h_i$ and $\hat{h}_{i+1}$.
+
+<div align="center">
+    <img src="images/Continuous_Training.jpeg" width="75%">
+</div>
+
+### Discrete Model
+
+The representation and dynamics models learn the log probabilities of multiple categorical distributions in the form of $z_i$ and $\hat{z}_{i+1}$. The latent embedding $h_i$ is obtained by sampling all the distributions in $z_i$ and one-hot encoding the results.
+
+<div align="center">
+    <img src="images/Discrete_Training.jpeg" width="75%">
+</div>
+
 ## Loss Function
 
 The world model and its components are optimized using the loss function shown in Equation 1
@@ -58,24 +74,6 @@ $$
      \max(kl\_clip, \text{KL}(\hat{z_i}, \text{sg}(z_i))) & \text{, discrete latent space} \\
 \end{cases}
 $$
-
-
-
-### Continuous Model
-
-The representation and dynamics models directly learn the continuous latent representations $h_i$ and $\hat{h}_{i+1}$.
-
-<div align="center">
-    <img src="images/Continuous_Training.jpeg" width="75%">
-</div>
-
-### Discrete Model
-
-The representation and dynamics models learn the log probabilities of multiple categorical distributions in the form of $z_i$ and $\hat{z}_{i+1}$. The latent embedding $h_i$ is obtained by sampling all the distributions in $z_i$ and one-hot encoding the results.
-
-<div align="center">
-    <img src="images/Discrete_Training.jpeg" width="75%">
-</div>
 
 ## Findings
 
