@@ -1,1 +1,0 @@
-cd container && sudo singularity build container.sif container.def && cd ..
